@@ -1,45 +1,38 @@
 import requests
-import xml.etree.ElementTree as ET
-import os
+from bs4 import BeautifulSoup # Questa libreria serve a leggere l'HTML
 
-# URL esatto della sitemap
-XML_URL = "https://ltta.tecnopolo.fe.it/sitemap.xml"
+BASE_URL = "https://ltta.tecnopolo.fe.it"
 OUTPUT_FILE = "sitemap-embed.html"
 
-def generate_html():
-    print(f"Inizio il download della sitemap da: {XML_URL}")
+def scrape_sitemap():
+    print(f"Inizio scansione del sito: {BASE_URL}")
     try:
-        response = requests.get(XML_URL, timeout=10)
-        response.raise_for_status() # Verifica se il sito risponde (200 OK)
+        response = requests.get(BASE_URL)
+        soup = BeautifulSoup(response.text, 'html.parser')
         
-        root = ET.fromstring(response.content)
-        ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-        
-        urls = [u.find('sm:loc', ns).text for u in root.findall('sm:url', ns)]
-        
-        if not urls:
-            print("Errore: Nessun link trovato nell'XML!")
+        # Trova tutti i link (tag <a>) che iniziano con l'indirizzo del tuo sito
+        links = set() # Usiamo un set per evitare duplicati
+        for a in soup.find_all('a', href=True):
+            href = a['href']
+            if href.startswith('/') or BASE_URL in href:
+                # Trasforma i link relativi (/chi-siamo) in assoluti
+                full_url = href if href.startswith('http') else f"{BASE_URL}{href}"
+                links.add(full_url)
+
+        if not links:
+            print("Non ho trovato link! Forse Google Sites blocca la lettura diretta.")
             return
 
-        print(f"Trovati {len(urls)} link. Genero l'HTML...")
+        print(f"Ho trovato {len(links)} link. Genero il file...")
 
-        html_content = "<div style='font-family:sans-serif;'><ul>"
-        for url in urls:
-            html_content += f"<li><a href='{url}' target='_top'>{url}</a></li>"
-        html_content += "</ul></div>"
-
-        # Scrittura del file
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            f.write(html_content)
-        
-        # Verifica finale se il file esiste davvero
-        if os.path.exists(OUTPUT_FILE):
-            print(f"Successo! File {OUTPUT_FILE} creato correttamente.")
-        else:
-            print("Errore: Il file non è stato scritto su disco.")
-
+            f.write("<html><body style='font-family:sans-serif;'><ul>")
+            for l in sorted(links):
+                f.write(f"<li><a href='{l}' target='_top'>{l}</a></li>")
+            f.write("</ul></body></html>")
+            
     except Exception as e:
-        print(f"ERRORE DURANTE L'ESECUZIONE: {e}")
+        print(f"Errore durante lo scraping: {e}")
 
 if __name__ == "__main__":
-    generate_html()
+    scrape_sitemap()
