@@ -2,18 +2,18 @@ name: Update Sitemap HTML
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Esegue ogni giorno a mezzanotte
-  workflow_dispatch: # Permette di avviarlo manualmente per test
+    - cron: '0 0 * * *' # Ogni giorno a mezzanotte
+  workflow_dispatch: # Permette l'avvio manuale
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Versione aggiornata
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Versione aggiornata
         with:
           python-version: '3.x'
 
