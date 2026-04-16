@@ -1,0 +1,32 @@
+name: Update Sitemap HTML
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Esegue ogni giorno a mezzanotte
+  workflow_dispatch: # Permette di avviarlo manualmente per test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run converter
+        run: python converter.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "Sitemap Bot"
+          git config --global user.email "bot@github.com"
+          git add sitemap-embed.html
+          git commit -m "Update sitemap HTML" || exit 0
+          git push
