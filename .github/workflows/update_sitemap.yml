@@ -1,4 +1,4 @@
-name: Update XML Sitemap
+name: Update Sitemaps (XML & HTML)
 
 on:
   schedule:
@@ -32,6 +32,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml
-          git commit -m "Update XML sitemap for Search Console" || exit 0
+          # Aggiungiamo entrambi i file
+          git add sitemap.xml sitemap.html
+          git commit -m "Automated sitemap update (XML & HTML)" || exit 0
           git push origin main
