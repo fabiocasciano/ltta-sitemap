@@ -31,7 +31,7 @@
     <loc>https://ltta.tecnopolo.fe.it/english/news-en/festival-of-technical-culture</loc>
   </url>
   <url>
-    <loc>https://ltta.tecnopolo.fe.it/english/news-en/laricomplex-en</loc>
+    <loc>https://ltta.tecnopolo.fe.it/english/news-en/lacricomplex-en</loc>
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/english/news-en/microscopic-visions</loc>
@@ -47,6 +47,9 @@
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/english/news-en/ultra-stable-pharmaceutical-compounds</loc>
+  </url>
+  <url>
+    <loc>https://ltta.tecnopolo.fe.it/english/news-en_old</loc>
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/english/partner-en</loc>
@@ -265,6 +268,9 @@
     <loc>https://ltta.tecnopolo.fe.it/italiano/news/convegno-la-microscopia-elettronica-nella-ricerca-scientifica</loc>
   </url>
   <url>
+    <loc>https://ltta.tecnopolo.fe.it/italiano/news/festival-della-cultura-tecnica</loc>
+  </url>
+  <url>
     <loc>https://ltta.tecnopolo.fe.it/italiano/news/giornata-nazionale-delle-università</loc>
   </url>
   <url>
@@ -284,6 +290,9 @@
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/italiano/news/visioni-microscopiche</loc>
+  </url>
+  <url>
+    <loc>https://ltta.tecnopolo.fe.it/italiano/news_old</loc>
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/italiano/partner</loc>
