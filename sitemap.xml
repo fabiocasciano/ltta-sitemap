@@ -130,6 +130,9 @@
     <loc>https://ltta.tecnopolo.fe.it/english/services/flow-cytometry</loc>
   </url>
   <url>
+    <loc>https://ltta.tecnopolo.fe.it/english/services/flow-cytometry/compensation-simulator</loc>
+  </url>
+  <url>
     <loc>https://ltta.tecnopolo.fe.it/english/services/flow-cytometry/contacts-flow-cytometry</loc>
   </url>
   <url>
@@ -329,6 +332,9 @@
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/italiano/servizi/citofluorimetria/pubblicazioni-citofluorimetria</loc>
+  </url>
+  <url>
+    <loc>https://ltta.tecnopolo.fe.it/italiano/servizi/citofluorimetria/simulatore-compensazione</loc>
   </url>
   <url>
     <loc>https://ltta.tecnopolo.fe.it/italiano/servizi/citofluorimetria/strumentazioni-citofluorimetria</loc>
